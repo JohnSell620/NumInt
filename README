@@ -1,0 +1,3 @@
+This program will evaluate double integrals, including the integrand and integration limits.
+The C++ Mathematical Expression Toolkit Library (ExprTk) is required to parse mathematical expressions.
+This library is found at www.partow.net/programming/exprtk.
