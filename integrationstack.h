@@ -1,3 +1,10 @@
+/**
+		integrationstack.h
+		Description: Implements a linked list to store integrand history.
+
+		@author Johnny Sellers
+		@version 0.1 05/30/2017
+*/
 #ifndef INTEGRATIONSTACK_H
 #define INTEGRATIONSTACK_H
 #include <QList>
