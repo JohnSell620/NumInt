@@ -1,2 +1,10 @@
 *.pro.user
 *.hpp
+*.h
+*.cpp
+*.qrc
+*.ui
+!Headers/.keep
+!Sources/.keep
+!Forms/.keep
+!Resources/.keep
