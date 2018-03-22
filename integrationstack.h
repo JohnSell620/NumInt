@@ -54,6 +54,7 @@ struct Integration {
     QString innerUpper() {
         return iu;
     }
+
 };
 
 
@@ -62,9 +63,9 @@ class IntegrationStack {
 public:
 
     void prepend(Integration integ) { container.prepend(integ); }
-    void append(Integration integ) { container.append(integ); }
+    void append(Integration integ)  { container.append(integ); }
     Integration takeFirst() { return container.takeFirst(); }
-    Integration takeLast() { return container.takeLast(); }
+    Integration takeLast()  { return container.takeLast(); }
     int size() { return container.size(); }
 
 private:

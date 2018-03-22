@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QKeyEvent>
+#include <string>
 #include "mydialog.h"
 #include "integrationstack.h"
 
@@ -18,13 +19,17 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
     IntegrationStack<Integration> *intStack = new IntegrationStack<Integration>();
 
 private slots:
     void on_pushButton_clicked();
     void keyPressEvent(QKeyEvent*);
     void on_actionNew_Window_triggered();
+    void on_pushButton_2_clicked();
+    void on_actionSave_triggered();
+    void on_actionExit_triggered();
+    bool exists(const std::string& name);
+    std::string exec(const char* cmd);
 
 private:
     Ui::MainWindow *ui;

@@ -1,2 +1,6 @@
 *.pro.user
 *.hpp
+/images
+!Headers/.keep
+!Sources/.keep
+!Forms/.keep
