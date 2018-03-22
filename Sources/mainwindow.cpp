@@ -7,8 +7,6 @@
 #include <array>
 #include <stdlib.h>
 #include <sys/stat.h>
-//#include <chrono>
-//#include <thread>
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -128,7 +126,6 @@ void MainWindow::on_pushButton_2_clicked()
     if (pID == 0)
     {
         std::system("c++ -std=c++11 -Ofast -march=native -DNDEBUG -c executable.cpp -o executable.o");
-//        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         _Exit(0);
     }
     else if (pID < 0)
@@ -171,15 +168,15 @@ void MainWindow::on_actionSave_triggered()
                     QMessageBox::Cancel);
             if (chosenButton != QMessageBox::Ok)
             {
-                return; // Save was cancelled
+                return; // Save cancelled
             }
         }
         if (!file.open(QIODevice::WriteOnly))
         {
             QMessageBox::critical(this, tr("Error"), tr("Failed to save file"));
-            return; //Aborted
+            return; // Aborted
         }
-        // All ok - save data
+        // Save data
         QFile inFile("executable.cpp");
         if(!inFile.open(QIODevice::ReadOnly))
             QMessageBox::information(0, "error", inFile.errorString());
