@@ -21,6 +21,15 @@ public:
     ~MainWindow();
     IntegrationStack<Integration> *intStack = new IntegrationStack<Integration>();
 
+    static QString command_history;
+//    void appendCommandHistory(const QString& str) {
+//        command_history.append(str);
+//    }
+    static QString setCommandHistory(const QString& str) {
+        command_history.append(str);
+        return command_history;
+    }
+
 private slots:
     void on_pushButton_clicked();
     void keyPressEvent(QKeyEvent*);

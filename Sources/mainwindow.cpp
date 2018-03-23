@@ -16,7 +16,6 @@
 #include <QMessageBox>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "mydialog.h"
 #include "gaussquadrature.cpp"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -91,7 +90,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 }
 
 
-// New window to display previous integration information
+// New window to display previous matrix commands
 void MainWindow::on_actionNew_Window_triggered()
 {
     mDialog = new MyDialog(this);
@@ -103,7 +102,6 @@ void MainWindow::on_actionNew_Window_triggered()
 void MainWindow::on_pushButton_2_clicked()
 {
     QString code = ui->textEdit->toPlainText();
-
     QString inclds = "#include <iostream>\n#include \"Matrix.hpp\"\n\n";
     QString header = "int main(int argc, char *argv[])\n{ \n";
     QString trailer = "\n\nreturn 0;\n}\n";
@@ -142,14 +140,17 @@ void MainWindow::on_pushButton_2_clicked()
 
     if (exists("executable"))
     {
-        std::string result = exec("./executable");
-        QString str = QString::fromUtf8(result.c_str());
-        ui->plainTextEdit->setPlainText(str);
+        std::string str = exec("./executable");
+        QString result = QString::fromUtf8(str.c_str());
+        ui->plainTextEdit->setPlainText(result);
+        QString trailer2 = "\n\n-----------------------------------------------------\n\n";
+        setCommandHistory("commands:\n\n" + code + "\n\nresults:\n\n" + result + trailer2);
     }
     else
     {
         ui->plainTextEdit->setPlainText("Error compiling executable");
     }
+
 }
 
 

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Command History</string>
   </property>
   <widget class="QPlainTextEdit" name="plainTextEdit">
    <property name="geometry">
@@ -33,7 +33,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Copy figures</string>
+    <string>Copy</string>
    </property>
   </widget>
  </widget>
