@@ -98,16 +98,17 @@ void MainWindow::on_actionNew_Window_triggered()
 }
 
 
-// Create and run executable
+// Create and run executable when "run" button is clicked
 void MainWindow::on_pushButton_2_clicked()
 {
+    // build QStrings to append to executable.cpp
     QString code = ui->textEdit->toPlainText();
-    QString inclds = "#include <iostream>\n#include \"Matrix.hpp\"\n\n";
+    QString inclds = "#include \"libhpc.h\"\n\n";
     QString header = "int main(int argc, char *argv[])\n{ \n";
     QString trailer = "\n\nreturn 0;\n}\n";
     QString executable = inclds + header + code + trailer;
 
-    remove("executable.cpp");
+    remove("executable.cpp");   // remove file if it already exists
     QString filename = "executable.cpp";
     QFile file(filename);
     if (file.open(QIODevice::ReadWrite))
@@ -123,18 +124,17 @@ void MainWindow::on_pushButton_2_clicked()
 
     if (pID == 0)
     {
-        std::system("c++ -std=c++11 -Ofast -march=native -DNDEBUG -c executable.cpp -o executable.o");
+        std::system("c++ -std=c++11 -I ./inc -L ./lib -static executable.cpp -lHPCLibrary -o executable");
         _Exit(0);
     }
     else if (pID < 0)
     {
         std::cerr << "Fork failed" << std::endl;
-        ui->plainTextEdit->setPlainText("Failed to compile executable.o; fork failed");
+        ui->plainTextEdit->setPlainText("Failed to compile executable; fork failed");
         std::exit(1);
     }
     else
     {
-        std::system("c++ -std=c++11 -Ofast -march=native -DNDEBUG executable.o Matrix.o Vector.o -o executable");
         ui->plainTextEdit->setPlainText("Success compiling executable.o");
     }
 
@@ -153,7 +153,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 }
 
-
+// Save input and output text in window
 void MainWindow::on_actionSave_triggered()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Text File"), "./", tr("cpp Files (*.cpp)"));
