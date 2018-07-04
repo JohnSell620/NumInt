@@ -1,9 +1,7 @@
-/*
-!.gitignore
-!NumInt.pro
-!/Headers/
-!/Sources/
-!/Forms/
-!/Resources/
-!/images/
-!README.md
+NumInt/*
+!NumInt/NumInt.pro
+!NumInt/Headers/
+!NumInt/Sources/
+!NumInt/Forms/
+!NumInt/Resources/
+!NumInt/images/
